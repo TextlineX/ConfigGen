@@ -5,11 +5,20 @@
 const CDN = require('../src/cdn');
 
 module.exports = function singbox(config, options = {}) {
-  const cdnIndex = options.cdnIndex || 0;
+  const cdnIndex = options.cdnIndex ?? 1;  // 默认使用 CDN 加速
   const { outbounds, rules, rule_sets } = parseConfig(config);
 
   const cfg = {
     log: { disabled: false, level: 'info' },
+    experimental: {
+      clash_api: {
+        external_controller: '127.0.0.1:20123',
+        default_mode: 'rule'
+      },
+      cache_file: {
+        enabled: false
+      }
+    },
     dns: buildDNS(config),
     inbounds: [
       { type: 'mixed', tag: 'mixed-in', listen: '0.0.0.0', listen_port: 20122, tcp_fast_open: true, tcp_multi_path: true, udp_fragment: true },
@@ -25,26 +34,36 @@ module.exports = function singbox(config, options = {}) {
 function buildOutbounds(config) {
   const out = [];
 
-  // 主选择器
-  out.push({ type: 'selector', tag: '🚀 自动选择', outbounds: [] });
-
-  // 收集所有节点
+  // 第一遍：收集所有节点
   const allNodes = [];
-  const proxyGroups = {};
+  const nodeTagSet = new Set();
+  for (const ob of (config.outbounds || [])) {
+    if (['shadowsocks', 'vless', 'vmess', 'trojan', 'tuic', 'hysteria2'].includes(ob.type)) {
+      if (!nodeTagSet.has(ob.tag)) {
+        allNodes.push(ob);
+        nodeTagSet.add(ob.tag);
+      }
+    }
+  }
 
+  // 第二遍：处理 urltest 组
+  const proxyGroups = {};
   for (const ob of (config.outbounds || [])) {
     if (ob.type === 'urltest') {
       const tag = ob.tag;
-      // 跳过 漏网之鱼，使用生成器自带的版本
       if (tag === '🐟 漏网之鱼') continue;
-      proxyGroups[tag] = { url: ob.url || 'https://www.gstatic.com/generate_204', nodes: [] };
-      proxyGroups[tag].nodes.push(ob.tag);
-    }
-    if (['shadowsocks', 'vless', 'vmess', 'trojan', 'tuic', 'hysteria2'].includes(ob.type)) {
-      allNodes.push(ob.tag);
+      // 排除自身引用（避免循环依赖）
+      const validNodes = (ob.outbounds || [])
+        .filter(n => n !== tag && nodeTagSet.has(n));
+      proxyGroups[tag] = {
+        url: ob.url || 'https://www.gstatic.com/generate_204',
+        nodes: validNodes.length ? validNodes : allNodes.map(n => n.tag).slice(0, 5)
+      };
     }
   }
-  out[0].outbounds = allNodes;
+
+  // 主选择器
+  out.push({ type: 'selector', tag: '🚀 自动选择', outbounds: allNodes.map(n => n.tag) });
 
   // 直连类
   out.push({ type: 'direct', tag: '📺 哔哩哔哩' });
@@ -75,14 +94,12 @@ function buildOutbounds(config) {
     url: 'https://www.gstatic.com/generate_204',
     interval: '3m',
     tolerance: 50,
-    outbounds: allNodes.length ? allNodes : ['🚀 自动选择']
+    outbounds: allNodes.map(n => n.tag).length ? allNodes.map(n => n.tag) : ['🚀 自动选择']
   });
 
   // 所有节点
-  for (const ob of (config.outbounds || [])) {
-    if (['shadowsocks', 'vless', 'vmess', 'trojan', 'tuic', 'hysteria2', 'shadowsocksr'].includes(ob.type)) {
-      out.push(ob);
-    }
+  for (const node of allNodes) {
+    out.push(node);
   }
 
   out.push({ type: 'block', tag: 'block' });
@@ -174,7 +191,6 @@ function buildRoute(config, cdnIndex = 0) {
 
   // 广告
   addRuleSet('ads-all', ruleSetSources.daily.adsAll);
-  addRuleSet('dreista-ads', 'https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/main/rule-set/category-ads-all.srs');
 
   // 游戏
   addRuleSet('kg-mc', ruleSetSources.game.kgMc);
@@ -226,7 +242,7 @@ function buildRoute(config, cdnIndex = 0) {
 
   // 路由规则
   routeRules.push(
-    { action: 'route', rule_set: ['ads-all', 'dreista-ads'], outbound: '🛑 广告拦截' },
+    { action: 'route', rule_set: ['ads-all'], outbound: '🛑 广告拦截' },
     { action: 'route', rule_set: ['kg-mc', 'steam-direct'], outbound: '🎮 游戏直连' },
     { action: 'route', rule_set: ['google-gemini'], outbound: 'Google Gemini' },
     { action: 'route', rule_set: ['adobe'], outbound: 'Adobe' },
@@ -268,8 +284,8 @@ function buildDNS(config) {
   return {
     servers: [
       { tag: 'dns_proxy', type: 'tcp', detour: '🚀 自动选择', server: '1.1.1.1' },
-      { tag: 'dns_direct', type: 'https', server: 'dns.alidns.com' },
-      { tag: 'dns_resolver', type: 'udp', server: '223.5.5.5' },
+      { tag: 'dns_direct', type: 'udp', server: '223.5.5.5', detour: 'direct' },
+      { tag: 'dns_resolver', type: 'udp', server: '119.29.29.29', detour: 'direct' },
       { tag: 'dns_fakeip', type: 'fakeip', inet4_range: '198.18.0.0/15', inet6_range: 'fc00::/18' }
     ],
     rules: [
