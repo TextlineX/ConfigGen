@@ -6,190 +6,131 @@ const CDN = require('./src/cdn');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const CONFIG_FILE = process.env.CONFIG_FILE || '/opt/configgen/config.json';
 
 app.use(express.json());
 app.use(express.static('public'));
 
-// 规则集映射表（默认源）
-const RULE_SETS = {
-  // DailyRules
-  'ads-all': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/category-ads-all.json',
-  'google': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/google.json',
-  'youtube': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/youtube.json',
-  'telegram': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/telegram.json',
-  'github': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/github.json',
-  'netflix': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/netflix.json',
-  'disney': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/disney.json',
-  'steam': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/steam.json',
-  'cn': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/cn.json',
-  'bilibili': 'https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/bilibili.json',
-  // GameRules
-  'kg-mc': 'https://raw.githubusercontent.com/TextlineX/GameRules/main/src/kg-mc.json',
-  'steam-direct': 'https://raw.githubusercontent.com/TextlineX/GameRules/main/src/steam-direct.json',
-};
-
-// 应用 CDN
-function applyCDN(url, cdnIndex = 0) {
-  if (cdnIndex === 0 || !url) return url;
-  if (url.includes('raw.githubusercontent.com')) {
-    const cdn = CDN.github[cdnIndex] || CDN.github[0];
-    return url.replace('https://raw.githubusercontent.com', cdn);
-  }
-  if (url.includes('github.com') && url.includes('/releases/')) {
-    const cdn = CDN.release[cdnIndex] || CDN.release[0];
-    return url.replace('https://github.com', cdn);
-  }
-  return url;
-}
-
-// 获取规则集内容
-async function fetchRuleSet(name) {
-  const url = RULE_SETS[name];
-  if (!url) return null;
+// 读取配置（优先读取私有配置文件）
+function loadConfig() {
   try {
-    const resp = await axios.get(url, { timeout: 10000 });
-    return resp.data;
-  } catch (err) {
-    console.error(`Failed to fetch ${name}:`, err.message);
-    return null;
+    if (fs.existsSync(CONFIG_FILE)) {
+      return JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
+    }
+  } catch (e) {}
+  return null;
+}
+
+// 保存配置到私有文件
+function saveConfig(data) {
+  const dir = path.dirname(CONFIG_FILE);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(CONFIG_FILE, JSON.stringify(data, null, 2));
+}
+
+// API: 获取配置
+app.get('/api/config', (req, res) => {
+  const config = loadConfig();
+  if (config) {
+    // 隐藏敏感信息
+    const safeConfig = JSON.parse(JSON.stringify(config));
+    safeConfig.outbounds?.forEach(ob => {
+      if (ob.password) ob.password = '***';
+      if (ob.uuid) ob.uuid = '***';
+    });
+    return res.json({ success: true, config: safeConfig });
   }
-}
-
-// 生成 sing-box 配置
-function generateSingbox(config, options = {}) {
-  const cdnIndex = options.cdnIndex || 0;
-  const gen = require('./generators/singbox');
-  return gen(config, { cdnIndex });
-}
-
-// 生成 Clash 配置
-function generateClash(config, options = {}) {
-  const cdnIndex = options.cdnIndex || 0;
-  const gen = require('./generators/clash');
-  return gen(config, { cdnIndex });
-}
-
-// 生成 Surge 配置
-function generateSurge(config, options = {}) {
-  const cdnIndex = options.cdnIndex || 0;
-  const gen = require('./generators/surge');
-  return gen(config, { cdnIndex });
-}
-
-// API: 获取 CDN 源列表
-app.get('/api/cdn', (req, res) => {
-  res.json({
-    success: true,
-    sources: CDN.getSources()
-  });
+  res.json({ success: false, message: 'No config found' });
 });
 
-// API: 获取可用规则列表
-app.get('/api/rules', (req, res) => {
-  const cdnIndex = parseInt(req.query.cdn || '0');
-  res.json({
-    success: true,
-    rules: Object.keys(RULE_SETS).map(name => ({
-      name,
-      url: applyCDN(RULE_SETS[name], cdnIndex)
-    }))
-  });
-});
-
-// API: 获取节点列表
-app.get('/api/nodes', (req, res) => {
+// API: 保存配置
+app.post('/api/config', (req, res) => {
   try {
-    const configPath = path.join(__dirname, 'src/config.json');
-    const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-    const nodes = (config.outbounds || []).filter(n =>
-      ['shadowsocks', 'vmess', 'vless', 'trojan', 'hysteria2', 'tuic'].includes(n.type)
-    );
-    res.json({ success: true, nodes });
+    const config = req.body;
+    if (!config || !config.outbounds) {
+      return res.status(400).json({ success: false, error: 'Invalid config' });
+    }
+    saveConfig(config);
+    res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
+// API: 获取节点列表
+app.get('/api/nodes', (req, res) => {
+  const config = loadConfig();
+  if (!config) return res.json({ success: false });
+  const nodes = (config.outbounds || []).filter(n =>
+    ['shadowsocks', 'vmess', 'vless', 'trojan', 'hysteria2', 'tuic'].includes(n.type)
+  );
+  res.json({ success: true, nodes });
+});
+
+// API: 获取 CDN 列表
+app.get('/api/cdn', (req, res) => {
+  res.json({ success: true, sources: CDN.getSources() });
+});
+
+// API: 获取规则列表
+app.get('/api/rules', (req, res) => {
+  const cdnIndex = parseInt(req.query.cdn || '1');
+  const applyCdn = (url) => {
+    if (cdnIndex === 0) return url;
+    if (url.includes('raw.githubusercontent.com')) {
+      const cdn = CDN.github[cdnIndex] || CDN.github[0];
+      return url.replace('https://raw.githubusercontent.com', cdn);
+    }
+    return url;
+  };
+
+  const rules = [
+    { name: 'ads-all', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/category-ads-all.json') },
+    { name: 'google', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/google.json') },
+    { name: 'youtube', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/youtube.json') },
+    { name: 'telegram', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/telegram.json') },
+    { name: 'github', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/github.json') },
+    { name: 'netflix', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/netflix.json') },
+    { name: 'cn', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/cn.json') },
+    { name: 'bilibili', url: applyCdn('https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/bilibili.json') },
+    { name: 'kg-mc', url: applyCdn('https://raw.githubusercontent.com/TextlineX/GameRules/main/src/kg-mc.json') },
+    { name: 'steam-direct', url: applyCdn('https://raw.githubusercontent.com/TextlineX/GameRules/main/src/steam-direct.json') },
+  ];
+  res.json({ success: true, rules });
+});
+
 // API: 生成配置
 app.post('/api/generate', async (req, res) => {
   try {
-    const { type, cdnIndex = 0 } = req.body;
-    const configPath = path.join(__dirname, 'src/config.json');
-    const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+    const { type, cdnIndex = 1 } = req.body;
+    const config = loadConfig();
+    if (!config) return res.status(400).json({ success: false, error: 'No config found' });
 
-    let content;
-    if (type === 'singbox') {
-      content = generateSingbox(config, { cdnIndex });
-      res.setHeader('Content-Type', 'application/json');
-    } else if (type === 'clash') {
-      content = generateClash(config, { cdnIndex });
-      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    } else if (type === 'surge' || type === 'shadowrocket' || type === 'surfboard') {
-      content = generateSurge(config, { cdnIndex });
-      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    } else {
-      return res.status(400).json({ success: false, error: 'Unknown type' });
-    }
+    let gen;
+    if (type === 'singbox') gen = require('./generators/singbox');
+    else if (type === 'clash') gen = require('./generators/clash');
+    else gen = require('./generators/surge');
 
+    const content = gen(config, { cdnIndex });
     res.json({ success: true, content });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-// API: 订阅地址（自动生成配置）
-app.get('/sub/:type', async (req, res) => {
-  try {
-    const { type } = req.params;
-    const cdnIndex = parseInt(req.query.cdn || '0');
-    const configPath = path.join(__dirname, 'src/config.json');
-    const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-
-    let content;
-    if (type === 'singbox') {
-      content = generateSingbox(config, { cdnIndex });
-      res.setHeader('Content-Type', 'application/json');
-    } else if (type === 'clash') {
-      content = generateClash(config, { cdnIndex });
-      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    } else if (type === 'surge') {
-      content = generateSurge(config, { cdnIndex });
-      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    } else {
-      return res.status(400).send('Unknown type');
-    }
-
-    // 防止缓存
-    res.setHeader('Cache-Control', 'no-store');
-    res.setHeader('Subscription-Userinfo', 'upload=0; download=0; total=999999; expire=' + (Date.now() + 86400000));
-    res.send(content);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
-
-// 仪表盘页面
+// 仪表盘
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 ╔═══════════════════════════════════════════╗
-║       ConfigGen Panel 启动成功            ║
+║       ConfigGen Panel 启动成功             ║
 ╠═══════════════════════════════════════════╣
-║  访问地址: http://localhost:${PORT}           ║
+║  访问地址: http://0.0.0.0:${PORT}           ║
 ║                                           ║
-║  订阅地址:                                ║
-║  - http://localhost:${PORT}/sub/clash       ║
-║  - http://localhost:${PORT}/sub/singbox     ║
-║  - http://localhost:${PORT}/sub/surge       ║
-║                                           ║
-║  CDN 加速:                                ║
-║  - ?cdn=0 官方源                          ║
-║  - ?cdn=1 ghproxy.net                     ║
-║  - ?cdn=2 kgithub.com                     ║
-║  - ?cdn=3 gitclone.com                    ║
+║  配置文件: ${CONFIG_FILE}  ║
 ╚═══════════════════════════════════════════╝
 `);
 });

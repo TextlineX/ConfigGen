@@ -14,20 +14,29 @@
     </header>
 
     <div class="main-content">
+      <!-- 节点配置 -->
+      <section class="card">
+        <h2>🖥️ 节点配置</h2>
+        <div class="node-editor">
+          <textarea id="node-config" placeholder='粘贴你的节点配置 JSON...'></textarea>
+          <div class="node-actions">
+            <button onclick="saveNodes()" class="btn-save">保存节点</button>
+            <button onclick="loadNodes()" class="btn-load">加载节点</button>
+          </div>
+          <div id="node-status" class="status-text"></div>
+        </div>
+      </section>
+
       <!-- CDN 选择 -->
       <section class="card">
         <h2>🚀 CDN 加速</h2>
         <div class="cdn-selector">
           <select id="cdn-select">
-            <option value="0">官方源 (raw.githubusercontent.com)</option>
-            <option value="1">ghproxy.net</option>
+            <option value="0">官方源</option>
+            <option value="1" selected>ghfast.top</option>
             <option value="2">ghproxy.com</option>
-            <option value="3">kgithub.com</option>
-            <option value="4">gitclone.com</option>
-            <option value="5">mirror.ghproxy.com</option>
-            <option value="6">github.moeyy.cn</option>
+            <option value="3">mirror.ghproxy.com</option>
           </select>
-          <span id="cdn-status" class="cdn-status">当前: 官方源</span>
         </div>
       </section>
 
@@ -37,29 +46,21 @@
         <div class="subscription-links">
           <div class="link-item">
             <span class="label">Clash</span>
-            <input type="text" id="sub-clash" readonly value="/sub/clash?cdn=0">
+            <input type="text" id="sub-clash" readonly value="">
             <button onclick="copyLink('sub-clash')">复制</button>
           </div>
           <div class="link-item">
             <span class="label">Sing-box</span>
-            <input type="text" id="sub-singbox" readonly value="/sub/singbox?cdn=0">
+            <input type="text" id="sub-singbox" readonly value="">
             <button onclick="copyLink('sub-singbox')">复制</button>
-          </div>
-          <div class="link-item">
-            <span class="label">Surge</span>
-            <input type="text" id="sub-surge" readonly value="/sub/surge?cdn=0">
-            <button onclick="copyLink('sub-surge')">复制</button>
           </div>
         </div>
       </section>
 
-      <!-- 节点列表 -->
+      <!-- 规则集 -->
       <section class="card">
-        <h2>🖥️ 节点列表</h2>
-        <div id="nodes-list" class="nodes-grid"></div>
-        <div class="nodes-stats">
-          <span id="nodes-count">加载中...</span>
-        </div>
+        <h2>📋 规则集</h2>
+        <div id="rules-list" class="rules-grid"></div>
       </section>
 
       <!-- 生成配置 -->
@@ -79,17 +80,10 @@
           <button onclick="copyConfig()" id="btn-copy" class="btn-copy" style="display:none">复制内容</button>
         </div>
       </section>
-
-      <!-- 规则集 -->
-      <section class="card">
-        <h2>📋 规则集状态</h2>
-        <div id="rules-list" class="rules-grid"></div>
-        <button onclick="loadRules()" class="btn-refresh">刷新状态</button>
-      </section>
     </div>
 
     <footer>
-      <p>ConfigGen Panel | 自动更新规则</p>
+      <p>ConfigGen Panel | 配置仅保存在本地</p>
     </footer>
   </div>
 

@@ -1,81 +1,125 @@
-# ConfigGen 面板
+# ConfigGen - 多客户端配置生成器
 
-多客户端配置生成面板，可部署到服务器。
+从单一节点配置文件，自动生成多种客户端配置。
 
 ## 支持的客户端
 
-- **Sing-box** - JSON 配置
-- **Clash / Clash Meta** - YAML 配置
-- **Surge / Shadowrocket** - CONF 配置
+| 客户端 | 格式 | 说明 |
+|--------|------|------|
+| sing-box | JSON | 完整配置文件 |
+| Clash / Clash Meta | YAML | 通用代理配置 |
+| Surge 4/5 | CONF | Surge 配置 |
+| Shadowrocket | CONF | iOS 通用 |
+| Surfboard | CONF | iOS 替代客户端 |
 
-## 快速部署
+## 快速开始
 
-### Docker 部署（推荐）
+### 1. 配置节点
 
-```bash
-docker build -t configgen .
-docker run -d -p 3000:3000 \
-  -v /your/config.json:/app/src/config.json \
-  --restart unless-stopped \
-  configgen
+编辑 `src/config.json`，放入你的 sing-box 节点配置：
+```json
+{
+  "outbounds": [
+    { "type": "vless", "server": "...", "uuid": "..." },
+    { "type": "shadowsocks", "server": "...", "password": "..." }
+  ]
+}
 ```
 
-### Docker Compose
-
-```yaml
-version: '3.8'
-services:
-  configgen:
-    build: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./src:/app/src
-    restart: unless-stopped
-```
-
-### 手动部署
+### 2. 生成配置
 
 ```bash
 npm install
-node server.js
+npm start
 ```
 
-## 功能
-
-1. **订阅地址** - 自动生成各客户端订阅
-   - `/sub/clash` - Clash 订阅
-   - `/sub/singbox` - Sing-box 订阅
-
-2. **规则集** - 在线查看所有规则状态
-
-3. **配置生成** - 实时生成各客户端配置
-
-4. **自动更新** - GitHub Actions 每6小时同步规则
-
-## API
+### 3. 获取生成的配置
 
 ```
-GET  /api/rules          # 获取规则列表
-POST /api/generate       # 生成配置
-GET  /sub/:type          # 订阅地址
+output/
+├── config-singbox.json    # sing-box
+├── config-clash.yaml      # Clash
+├── config-surge.conf      # Surge
+├── config-shadowrocket.conf
+└── config-surfboard.conf
 ```
 
 ## 目录结构
 
 ```
 ConfigGen/
-├── server.js           # Express 服务
 ├── src/
-│   └── config.json     # 你的配置文件
-├── public/             # 前端静态文件
-│   ├── index.html
-│   ├── css/style.css
-│   └── js/app.js
-├── generators/         # 配置生成器
+│   ├── config.json        # 你的节点配置
+│   ├── index.js           # 生成器入口
+│   └── cdn.js            # CDN 列表
+├── generators/            # 各客户端生成器
 │   ├── singbox.js
 │   ├── clash.js
 │   └── surge.js
+├── output/               # 生成输出
+├── public/               # Web 面板 (可选)
+│   ├── index.html
+│   ├── css/style.css
+│   └── js/app.js
+├── server.js             # Web 服务
 ├── Dockerfile
 └── README.md
 ```
+
+## Web 面板 (可选)
+
+部署到服务器后，可通过浏览器访问：
+
+```
+http://你的服务器:3000
+```
+
+功能：
+- 查看节点列表
+- 生成各客户端配置
+- 一键复制订阅地址
+- CDN 加速选择
+
+## Docker 部署
+
+```bash
+# 构建
+docker build -t configgen .
+
+# 运行
+docker run -d -p 3000:3000 \
+  -v /your/config.json:/app/src/config.json \
+  configgen
+```
+
+## CDN 加速
+
+面板支持多种 CDN 切换：
+- 官方源
+- ghfast.top
+- ghproxy.com
+- mirror.ghproxy.com
+- github.moeyy.cn
+- kgithub.com
+
+## 规则来源
+
+ConfigGen 自动组装以下规则仓库：
+- [DailyRules](https://github.com/TextlineX/DailyRules) - 日常规则
+- [GameRules](https://github.com/TextlineX/GameRules) - 游戏规则
+
+## API
+
+```
+GET  /api/rules          # 获取规则列表
+GET  /api/nodes          # 获取节点列表
+POST /api/generate       # 生成配置
+GET  /sub/:type          # 订阅地址
+     /sub/clash
+     /sub/singbox
+     /sub/surge
+```
+
+## License
+
+MIT

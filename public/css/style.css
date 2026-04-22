@@ -28,10 +28,6 @@ header h1 {
   margin-bottom: 10px;
 }
 
-header p {
-  color: #888;
-}
-
 .main-content {
   display: grid;
   gap: 20px;
@@ -46,34 +42,72 @@ header p {
 
 .card h2 {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   color: #fff;
 }
 
-/* CDN 选择 */
-.cdn-selector {
+/* 节点配置 */
+.node-editor {
   display: flex;
-  gap: 16px;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
 }
 
+.node-editor textarea {
+  width: 100%;
+  height: 300px;
+  background: #252540;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 16px;
+  color: #e0e0e0;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+.node-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-save {
+  background: #4ade80;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-load {
+  background: #333;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.status-text {
+  font-size: 0.9rem;
+  min-height: 20px;
+}
+
+/* CDN */
 .cdn-selector select {
-  flex: 1;
-  max-width: 400px;
   padding: 12px 16px;
   background: #252540;
   border: 1px solid #333;
   color: #fff;
   border-radius: 8px;
   font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
 }
 
-.cdn-status {
-  color: #4ade80;
-  font-size: 0.9rem;
-}
-
-/* 订阅地址 */
+/* 订阅 */
 .subscription-links {
   display: flex;
   gap: 20px;
@@ -113,37 +147,28 @@ header p {
   color: #000;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
 }
 
-.link-item button:hover {
-  background: #00b8e6;
-}
-
-/* 规则集 */
+/* 规则 */
 .rules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
 }
 
 .rule-item {
   background: #252540;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px 12px;
+  border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.rule-item .name {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.85rem;
 }
 
 .rule-item .status {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #4ade80;
 }
@@ -152,58 +177,11 @@ header p {
   background: #ef4444;
 }
 
-.rule-item .status.loading {
-  background: #fbbf24;
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* 节点列表 */
-.nodes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 12px;
-  max-height: 350px;
-  overflow-y: auto;
-}
-
-.node-item {
-  background: #252540;
-  padding: 12px;
-  border-radius: 8px;
-  border-left: 3px solid #00d4ff;
-}
-
-.node-item .tag {
-  font-weight: bold;
-  color: #00d4ff;
-  margin-bottom: 6px;
-  font-size: 0.95rem;
-}
-
-.node-item .info {
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.nodes-stats {
-  margin-top: 16px;
-  padding: 12px;
-  background: #252540;
-  border-radius: 8px;
-  text-align: center;
-  color: #4ade80;
-}
-
-/* 配置生成 */
+/* 生成 */
 .generate-section {
   display: flex;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .generate-section select {
@@ -224,11 +202,6 @@ header p {
   color: #000;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
-}
-
-.generate-section button:hover {
-  background: #00b8e6;
 }
 
 .config-preview {
@@ -240,7 +213,7 @@ header p {
   max-height: 400px;
   font-size: 0.8rem;
   line-height: 1.5;
-  color: #a0a0a0;
+  white-space: pre-wrap;
 }
 
 .action-buttons {
@@ -258,28 +231,12 @@ header p {
   color: #000 !important;
 }
 
-.btn-refresh {
-  margin-top: 16px;
-  background: #333;
-  border: 1px solid #444;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-refresh:hover {
-  background: #444;
-}
-
 footer {
   text-align: center;
   padding: 40px 0;
   color: #555;
 }
 
-/* 滚动条 */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -294,23 +251,9 @@ footer {
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #444;
-}
-
-/* 响应式 */
 @media (max-width: 768px) {
-  .subscription-links {
+  .subscription-links,
+  .generate-section {
     flex-direction: column;
-  }
-
-  .cdn-selector {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cdn-selector select {
-    max-width: 100%;
-    width: 100%;
   }
 }
