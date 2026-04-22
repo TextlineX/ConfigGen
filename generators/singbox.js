@@ -5,7 +5,7 @@
 const CDN = require('../src/cdn');
 
 module.exports = function singbox(config, options = {}) {
-  const cdnIndex = options.cdnIndex ?? 1;  // 默认使用 kgithub CDN
+  const cdnIndex = 0;  // 使用官方源，通过代理下载
   const { outbounds, rules, rule_sets } = parseConfig(config);
 
   const cfg = {
