@@ -1,0 +1,506 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:20123
+
+dns:
+  enable: true
+  enhanced-mode: fakeip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  fallback:
+    - https://1.1.1.1/dns-query
+    - tls://dns.google
+  fallback-filter:
+    - geoip:cn
+    - geoip:private
+
+  🚀 自动选择:
+    - select
+    - Google Gemini
+    - 💬 AI 服务
+    - 📹 油管视频
+    - 🔍 谷歌服务
+    - 📲 电报消息
+    - 🐱 Github
+    - 🌐 社交媒体
+    - 🎬 流媒体
+    - 🎮 游戏平台
+    - 📚 教育资源
+    - 💰 金融服务
+    - ☁️ 云服务
+    - 🌐 非中国
+    - 🐟 漏网之鱼
+    - 私人使用 | SS爱弥斯1 1
+    - 剩余流量：345.21 GB
+    - 距离下次重置剩余：30 天
+    - 套餐到期：2026-05-02
+    - 1x-🇭🇰香港 01 Lv2
+    - 1x-🇭🇰香港 02 Lv2
+    - 1x-🇭🇰香港 03 Lv2
+    - 1x-🇭🇰香港 04 Lv2
+    - 1x-🇭🇰香港 05 Lv2
+    - 1x-🇭🇰香港 06 Lv2
+    - 1x-🇨🇳台湾 01 Lv2
+    - 1x-🇨🇳台湾 02 Lv2
+    - 1x-🇸🇬新加坡A01 Lv2
+    - 1x-🇸🇬新加坡A02 Lv2
+    - 1x-🇯🇵日本A01 Lv2
+    - 1x-🇯🇵日本A02 Lv2
+    - 1x-🇺🇸美国 01 Lv2
+    - 1x-🇺🇸美国 02 Lv2
+    - 1x-🇻🇳越南A01 Lv2
+    - 1x-🇰🇷韩国 01 Lv2
+    - 1x-🇲🇾马来西亚 01 Lv2
+    - 1x-🇷🇺俄罗斯01 Lv2
+    - 1x-🇦🇺澳大利亚01 Lv2
+    - 1x-🇹🇷土耳其01 Lv2
+    - 1x-🇫🇷法国01 Lv2
+    - 1x-🇬🇧英国01 Lv2
+
+  Google Gemini:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - Google Gemini
+
+  💬 AI 服务:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 💬 AI 服务
+
+  📹 油管视频:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 📹 油管视频
+
+  🔍 谷歌服务:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 🔍 谷歌服务
+
+  📲 电报消息:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 📲 电报消息
+
+  🐱 Github:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 🐱 Github
+
+  🌐 社交媒体:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 🌐 社交媒体
+
+  🎬 流媒体:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 🎬 流媒体
+
+  🎮 游戏平台:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 🎮 游戏平台
+
+  📚 教育资源:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 📚 教育资源
+
+  💰 金融服务:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 💰 金融服务
+
+  ☁️ 云服务:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - ☁️ 云服务
+
+  🌐 非中国:
+    - url: https://www.gstatic.com/generate_204
+    - interval: 180000
+    - 🌐 非中国
+
+  🐟 漏网之鱼:
+    - select
+    - 🚀 自动选择
+    - direct
+
+  🇭🇰香港:
+    - select
+    - 1x-🇭🇰香港 01 Lv2
+    - 1x-🇭🇰香港 02 Lv2
+    - 1x-🇭🇰香港 03 Lv2
+    - 1x-🇭🇰香港 04 Lv2
+    - 1x-🇭🇰香港 05 Lv2
+    - 1x-🇭🇰香港 06 Lv2
+
+  🇨🇳台湾:
+    - select
+    - 1x-🇨🇳台湾 01 Lv2
+    - 1x-🇨🇳台湾 02 Lv2
+
+  🇯🇵日本:
+    - select
+    - 1x-🇯🇵日本A01 Lv2
+    - 1x-🇯🇵日本A02 Lv2
+
+  🇸🇬新加坡:
+    - select
+    - 1x-🇸🇬新加坡A01 Lv2
+    - 1x-🇸🇬新加坡A02 Lv2
+
+  🇺🇸美国:
+    - select
+    - 1x-🇺🇸美国 01 Lv2
+    - 1x-🇺🇸美国 02 Lv2
+
+  🇰🇷韩国:
+    - select
+    - 1x-🇰🇷韩国 01 Lv2
+
+  🌐其他:
+    - select
+    - 私人使用 | SS爱弥斯1 1
+    - 剩余流量：345.21 GB
+    - 距离下次重置剩余：30 天
+    - 套餐到期：2026-05-02
+    - 1x-🇻🇳越南A01 Lv2
+    - 1x-🇲🇾马来西亚 01 Lv2
+    - 1x-🇷🇺俄罗斯01 Lv2
+    - 1x-🇦🇺澳大利亚01 Lv2
+    - 1x-🇹🇷土耳其01 Lv2
+    - 1x-🇫🇷法国01 Lv2
+    - 1x-🇬🇧英国01 Lv2
+
+proxies:
+  - name: 私人使用 | SS爱弥斯1 1
+    type: shadowsocks
+    server: tl.textline.top
+    port: 59112
+    password: 0yUH1QiGs0e22QsarU2/OB4q8EYWJ4MRNSDe7Q+JVm8=
+    cipher: chacha20-ietf-poly1305
+
+  - name: 剩余流量：345.21 GB
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39901
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 距离下次重置剩余：30 天
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39901
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 套餐到期：2026-05-02
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39901
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇭🇰香港 01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39901
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇭🇰香港 02 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39902
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇭🇰香港 03 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39903
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇭🇰香港 04 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39904
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇭🇰香港 05 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39905
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇭🇰香港 06 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39906
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: 1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇨🇳台湾 01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39801
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇨🇳台湾 02 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39802
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇸🇬新加坡A01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39701
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇸🇬新加坡A02 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39702
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇯🇵日本A01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39711
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: Db6X5b7az8AGfuSGjK-YAmRYUgLsvqtuBs_D4itRwB0
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇯🇵日本A02 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39712
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: Db6X5b7az8AGfuSGjK-YAmRYUgLsvqtuBs_D4itRwB0
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇺🇸美国 01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39731
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇺🇸美国 02 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39732
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇻🇳越南A01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39601
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇰🇷韩国 01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39602
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇲🇾马来西亚 01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39603
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇷🇺俄罗斯01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39604
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇦🇺澳大利亚01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39605
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇹🇷土耳其01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39607
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇫🇷法国01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39608
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+  - name: 1x-🇬🇧英国01 Lv2
+    type: vless
+    server: b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com
+    port: 39609
+    uuid: 106687f0-f449-497a-a6ac-551f258b3553
+    tls: true
+    sni: www.microsoft.com
+    reality-opts:
+      public-key: AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE
+    flow: xtls-rprx-vision
+
+
+rules:
+  - DOMAIN-SUFFIX,doubleclick.net,🛑 广告拦截
+  - DOMAIN-SUFFIX,googlesyndication.com,🛑 广告拦截
+  - DOMAIN-KEYWORD,ads,🛑 广告拦截
+  - DOMAIN-SUFFIX,bilibili.com,📺 哔哩哔哩
+  - DOMAIN-SUFFIX,baidu.com,🔒 国内服务
+  - DOMAIN-SUFFIX,taobao.com,🔒 国内服务
+  - DOMAIN-SUFFIX,tmall.com,🔒 国内服务
+  - DOMAIN-SUFFIX,tencent.com,🔒 国内服务
+  - DOMAIN-SUFFIX,qq.com,🔒 国内服务
+  - DOMAIN-KEYWORD,cn,🔒 国内服务
+  - GEOIP,CN,🔒 国内服务
+  - DOMAIN-SUFFIX,youtube.com,📹 油管视频
+  - DOMAIN-SUFFIX,googlevideo.com,📹 油管视频
+  - DOMAIN-SUFFIX,google.com,🔍 谷歌服务
+  - DOMAIN-SUFFIX,telegram.org,📲 电报消息
+  - DOMAIN-SUFFIX,github.com,🐱 Github
+  - DOMAIN-SUFFIX,steam.com,🎮 游戏平台
+  - DOMAIN-SUFFIX,steampowered.com,🎮 游戏平台
+  - DOMAIN-SUFFIX,netflix.com,🎬 流媒体
+  - DOMAIN-SUFFIX,disney.com,🎬 流媒体
+  - DOMAIN-SUFFIX,disneyplus.com,🎬 流媒体
+  - DOMAIN-SUFFIX,fb.com,🌐 社交媒体
+  - DOMAIN-SUFFIX,facebook.com,🌐 社交媒体
+  - DOMAIN-SUFFIX,twitter.com,🌐 社交媒体
+  - DOMAIN-SUFFIX,x.com,🌐 社交媒体
+  - DOMAIN-SUFFIX,tiktok.com,🌐 社交媒体
+  - DOMAIN-SUFFIX,apple.com,🍏 苹果服务
+  - DOMAIN-SUFFIX,microsoft.com,Ⓜ️ 微软服务
+  - DOMAIN-SUFFIX,azure.com,☁️ 云服务
+  - DOMAIN-SUFFIX,aws.amazon.com,☁️ 云服务
+  - DOMAIN-SUFFIX,paypal.com,💰 金融服务
+  - DOMAIN-SUFFIX,coursera.org,📚 教育资源
+  - DOMAIN-SUFFIX,udemy.com,📚 教育资源
+  - DOMAIN-SUFFIX,gemini.google.com,Google Gemini
+  - DOMAIN-SUFFIX,openai.com,💬 AI 服务
+  - DOMAIN-SUFFIX,anthropic.com,💬 AI 服务
+  - DOMAIN-SUFFIX,chatgpt.com,💬 AI 服务
+  - DOMAIN-SUFFIX,adobe.com,Adobe
+  - MATCH,🐟 漏网之鱼

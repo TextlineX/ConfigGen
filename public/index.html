@@ -14,34 +14,52 @@
     </header>
 
     <div class="main-content">
+      <!-- CDN 选择 -->
+      <section class="card">
+        <h2>🚀 CDN 加速</h2>
+        <div class="cdn-selector">
+          <select id="cdn-select">
+            <option value="0">官方源 (raw.githubusercontent.com)</option>
+            <option value="1">ghproxy.net</option>
+            <option value="2">ghproxy.com</option>
+            <option value="3">kgithub.com</option>
+            <option value="4">gitclone.com</option>
+            <option value="5">mirror.ghproxy.com</option>
+            <option value="6">github.moeyy.cn</option>
+          </select>
+          <span id="cdn-status" class="cdn-status">当前: 官方源</span>
+        </div>
+      </section>
+
       <!-- 订阅地址 -->
       <section class="card">
         <h2>📡 订阅地址</h2>
         <div class="subscription-links">
           <div class="link-item">
             <span class="label">Clash</span>
-            <input type="text" id="sub-clash" readonly value="/sub/clash">
+            <input type="text" id="sub-clash" readonly value="/sub/clash?cdn=0">
             <button onclick="copyLink('sub-clash')">复制</button>
           </div>
           <div class="link-item">
             <span class="label">Sing-box</span>
-            <input type="text" id="sub-singbox" readonly value="/sub/singbox">
+            <input type="text" id="sub-singbox" readonly value="/sub/singbox?cdn=0">
             <button onclick="copyLink('sub-singbox')">复制</button>
           </div>
+          <div class="link-item">
+            <span class="label">Surge</span>
+            <input type="text" id="sub-surge" readonly value="/sub/surge?cdn=0">
+            <button onclick="copyLink('sub-surge')">复制</button>
+          </div>
         </div>
-      </section>
-
-      <!-- 规则集 -->
-      <section class="card">
-        <h2>📋 规则集</h2>
-        <div id="rules-list" class="rules-grid"></div>
       </section>
 
       <!-- 节点列表 -->
       <section class="card">
         <h2>🖥️ 节点列表</h2>
         <div id="nodes-list" class="nodes-grid"></div>
-        <button onclick="loadNodes()" class="btn-refresh">刷新节点</button>
+        <div class="nodes-stats">
+          <span id="nodes-count">加载中...</span>
+        </div>
       </section>
 
       <!-- 生成配置 -->
@@ -56,9 +74,23 @@
           <button onclick="generateConfig()">生成配置</button>
         </div>
         <pre id="config-output" class="config-preview"></pre>
-        <button onclick="downloadConfig()" id="btn-download" class="btn-download" style="display:none">下载配置</button>
+        <div class="action-buttons">
+          <button onclick="downloadConfig()" id="btn-download" class="btn-download" style="display:none">下载配置</button>
+          <button onclick="copyConfig()" id="btn-copy" class="btn-copy" style="display:none">复制内容</button>
+        </div>
+      </section>
+
+      <!-- 规则集 -->
+      <section class="card">
+        <h2>📋 规则集状态</h2>
+        <div id="rules-list" class="rules-grid"></div>
+        <button onclick="loadRules()" class="btn-refresh">刷新状态</button>
       </section>
     </div>
+
+    <footer>
+      <p>ConfigGen Panel | 自动更新规则</p>
+    </footer>
   </div>
 
   <script src="/js/app.js"></script>

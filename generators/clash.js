@@ -90,13 +90,22 @@ function buildClashGroups(config) {
   };
 
   const nodeGroups = {
-    '香港': [],
-    '台湾': [],
-    '日本': [],
-    '新加坡': [],
-    '美国': [],
-    '韩国': [],
-    '其他': [],
+    '🇭🇰香港': [],
+    '🇨🇳台湾': [],
+    '🇯🇵日本': [],
+    '🇸🇬新加坡': [],
+    '🇺🇸美国': [],
+    '🇰🇷韩国': [],
+    '🌐其他': [],
+  };
+
+  const keywordsMap = {
+    '🇭🇰香港': ['香港'],
+    '🇨🇳台湾': ['台湾'],
+    '🇯🇵日本': ['日本'],
+    '🇸🇬新加坡': ['新加坡'],
+    '🇺🇸美国': ['美国'],
+    '🇰🇷韩国': ['韩国'],
   };
 
   for (const ob of config.outbounds || []) {
@@ -106,19 +115,18 @@ function buildClashGroups(config) {
       groups[name].nodes.push(ob.tag);
       groups['🚀 自动选择'].nodes.push(name);
     }
-    if (ob.type === 'shadowsocks' || ob.type === 'vless' || ob.type === 'vmess') {
+    if (['shadowsocks', 'vless', 'vmess', 'trojan'].includes(ob.type)) {
       const tag = ob.tag;
-      for (const [region, keywords] of Object.entries({
-        '🇭🇰香港': ['香港'],
-        '🇨🇳台湾': ['台湾'],
-        '🇯🇵日本': ['日本'],
-        '🇸🇬新加坡': ['新加坡'],
-        '🇺🇸美国': ['美国'],
-        '🇰🇷韩国': ['韩国'],
-      })) {
+      let matched = false;
+      for (const [region, keywords] of Object.entries(keywordsMap)) {
         if (keywords.some(k => tag.includes(k))) {
           nodeGroups[region].push(tag);
+          matched = true;
+          break;
         }
+      }
+      if (!matched) {
+        nodeGroups['🌐其他'].push(tag);
       }
       groups['🚀 自动选择'].nodes.push(tag);
     }

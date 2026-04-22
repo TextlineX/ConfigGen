@@ -50,6 +50,29 @@ header p {
   color: #fff;
 }
 
+/* CDN 选择 */
+.cdn-selector {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.cdn-selector select {
+  flex: 1;
+  max-width: 400px;
+  padding: 12px 16px;
+  background: #252540;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.cdn-status {
+  color: #4ade80;
+  font-size: 0.9rem;
+}
+
 /* 订阅地址 */
 .subscription-links {
   display: flex;
@@ -65,7 +88,7 @@ header p {
   padding: 12px 16px;
   border-radius: 8px;
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
 }
 
 .link-item .label {
@@ -90,12 +113,17 @@ header p {
   color: #000;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.link-item button:hover {
+  background: #00b8e6;
 }
 
 /* 规则集 */
 .rules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 12px;
 }
 
@@ -110,11 +138,12 @@ header p {
 
 .rule-item .name {
   font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .rule-item .status {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #4ade80;
 }
@@ -123,12 +152,22 @@ header p {
   background: #ef4444;
 }
 
+.rule-item .status.loading {
+  background: #fbbf24;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
 /* 节点列表 */
 .nodes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 12px;
-  max-height: 400px;
+  max-height: 350px;
   overflow-y: auto;
 }
 
@@ -136,12 +175,14 @@ header p {
   background: #252540;
   padding: 12px;
   border-radius: 8px;
+  border-left: 3px solid #00d4ff;
 }
 
 .node-item .tag {
   font-weight: bold;
   color: #00d4ff;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
 }
 
 .node-item .info {
@@ -149,18 +190,13 @@ header p {
   color: #888;
 }
 
-.btn-refresh {
+.nodes-stats {
   margin-top: 16px;
-  background: #333;
-  border: 1px solid #444;
-  color: #fff;
-  padding: 10px 20px;
+  padding: 12px;
+  background: #252540;
   border-radius: 8px;
-  cursor: pointer;
-}
-
-.btn-refresh:hover {
-  background: #444;
+  text-align: center;
+  color: #4ade80;
 }
 
 /* 配置生成 */
@@ -188,27 +224,59 @@ header p {
   color: #000;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.generate-section button:hover {
+  background: #00b8e6;
 }
 
 .config-preview {
-  background: #252540;
+  background: #1a1a2e;
+  border: 1px solid #333;
   padding: 16px;
   border-radius: 8px;
   overflow-x: auto;
   max-height: 400px;
-  font-size: 0.85rem;
-  line-height: 1.6;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #a0a0a0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .btn-download {
+  background: #4ade80 !important;
+}
+
+.btn-copy {
+  background: #fbbf24 !important;
+  color: #000 !important;
+}
+
+.btn-refresh {
   margin-top: 16px;
-  background: #4ade80;
-  border: none;
-  padding: 12px 24px;
+  background: #333;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 10px 20px;
   border-radius: 8px;
-  color: #000;
-  font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-refresh:hover {
+  background: #444;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+  color: #555;
 }
 
 /* 滚动条 */
@@ -228,4 +296,21 @@ header p {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .subscription-links {
+    flex-direction: column;
+  }
+
+  .cdn-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cdn-selector select {
+    max-width: 100%;
+    width: 100%;
+  }
 }

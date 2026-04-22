@@ -1,0 +1,1380 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info"
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "type": "tcp",
+        "detour": "🚀 自动选择",
+        "server": "1.1.1.1"
+      },
+      {
+        "tag": "dns_direct",
+        "type": "https",
+        "server": "dns.alidns.com"
+      },
+      {
+        "tag": "dns_resolver",
+        "type": "udp",
+        "server": "223.5.5.5"
+      },
+      {
+        "tag": "dns_fakeip",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "action": "route",
+        "rule_set": "geolocation-!cn",
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_fakeip"
+      },
+      {
+        "action": "route",
+        "rule_set": "geolocation-!cn",
+        "query_type": "CNAME",
+        "server": "dns_proxy"
+      },
+      {
+        "action": "predefined",
+        "invert": true,
+        "query_type": [
+          "A",
+          "AAAA",
+          "CNAME"
+        ],
+        "rcode": "REFUSED"
+      }
+    ],
+    "disable_cache": false,
+    "disable_expire": false,
+    "independent_cache": true,
+    "final": "dns_direct",
+    "strategy": "prefer_ipv4"
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "0.0.0.0",
+      "listen_port": 20122,
+      "tcp_fast_open": true,
+      "tcp_multi_path": true,
+      "udp_fragment": true
+    },
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "address": [
+        "172.19.0.1/30"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "mixed"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "🚀 自动选择",
+      "outbounds": [
+        "私人使用 | SS爱弥斯1 1",
+        "剩余流量：345.21 GB",
+        "距离下次重置剩余：30 天",
+        "套餐到期：2026-05-02",
+        "1x-🇭🇰香港 01 Lv2",
+        "1x-🇭🇰香港 02 Lv2",
+        "1x-🇭🇰香港 03 Lv2",
+        "1x-🇭🇰香港 04 Lv2",
+        "1x-🇭🇰香港 05 Lv2",
+        "1x-🇭🇰香港 06 Lv2",
+        "1x-🇨🇳台湾 01 Lv2",
+        "1x-🇨🇳台湾 02 Lv2",
+        "1x-🇸🇬新加坡A01 Lv2",
+        "1x-🇸🇬新加坡A02 Lv2",
+        "1x-🇯🇵日本A01 Lv2",
+        "1x-🇯🇵日本A02 Lv2",
+        "1x-🇺🇸美国 01 Lv2",
+        "1x-🇺🇸美国 02 Lv2",
+        "1x-🇻🇳越南A01 Lv2",
+        "1x-🇰🇷韩国 01 Lv2",
+        "1x-🇲🇾马来西亚 01 Lv2",
+        "1x-🇷🇺俄罗斯01 Lv2",
+        "1x-🇦🇺澳大利亚01 Lv2",
+        "1x-🇹🇷土耳其01 Lv2",
+        "1x-🇫🇷法国01 Lv2",
+        "1x-🇬🇧英国01 Lv2"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "📺 哔哩哔哩"
+    },
+    {
+      "type": "direct",
+      "tag": "🛑 广告拦截"
+    },
+    {
+      "type": "direct",
+      "tag": "🎮 游戏直连"
+    },
+    {
+      "type": "direct",
+      "tag": "🔒 国内服务"
+    },
+    {
+      "type": "direct",
+      "tag": "🏠 私有网络"
+    },
+    {
+      "type": "direct",
+      "tag": "Ⓜ️ 微软服务"
+    },
+    {
+      "type": "direct",
+      "tag": "🍏 苹果服务"
+    },
+    {
+      "type": "direct",
+      "tag": "Adobe"
+    },
+    {
+      "type": "urltest",
+      "tag": "Google Gemini",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "Google Gemini"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "💬 AI 服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "💬 AI 服务"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "📹 油管视频",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "📹 油管视频"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🔍 谷歌服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "🔍 谷歌服务"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "📲 电报消息",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "📲 电报消息"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🐱 Github",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "🐱 Github"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🌐 社交媒体",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "🌐 社交媒体"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🎬 流媒体",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "🎬 流媒体"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🎮 游戏平台",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "🎮 游戏平台"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "📚 教育资源",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "📚 教育资源"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "💰 金融服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "💰 金融服务"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "☁️ 云服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "☁️ 云服务"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🌐 非中国",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "🌐 非中国"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🐟 漏网之鱼",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "🐟 漏网之鱼"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🐟 漏网之鱼",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "outbounds": [
+        "私人使用 | SS爱弥斯1 1",
+        "剩余流量：345.21 GB",
+        "距离下次重置剩余：30 天",
+        "套餐到期：2026-05-02",
+        "1x-🇭🇰香港 01 Lv2",
+        "1x-🇭🇰香港 02 Lv2",
+        "1x-🇭🇰香港 03 Lv2",
+        "1x-🇭🇰香港 04 Lv2",
+        "1x-🇭🇰香港 05 Lv2",
+        "1x-🇭🇰香港 06 Lv2",
+        "1x-🇨🇳台湾 01 Lv2",
+        "1x-🇨🇳台湾 02 Lv2",
+        "1x-🇸🇬新加坡A01 Lv2",
+        "1x-🇸🇬新加坡A02 Lv2",
+        "1x-🇯🇵日本A01 Lv2",
+        "1x-🇯🇵日本A02 Lv2",
+        "1x-🇺🇸美国 01 Lv2",
+        "1x-🇺🇸美国 02 Lv2",
+        "1x-🇻🇳越南A01 Lv2",
+        "1x-🇰🇷韩国 01 Lv2",
+        "1x-🇲🇾马来西亚 01 Lv2",
+        "1x-🇷🇺俄罗斯01 Lv2",
+        "1x-🇦🇺澳大利亚01 Lv2",
+        "1x-🇹🇷土耳其01 Lv2",
+        "1x-🇫🇷法国01 Lv2",
+        "1x-🇬🇧英国01 Lv2"
+      ]
+    },
+    {
+      "tag": "私人使用 | SS爱弥斯1 1",
+      "type": "shadowsocks",
+      "server": "tl.textline.top",
+      "server_port": 59112,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0yUH1QiGs0e22QsarU2/OB4q8EYWJ4MRNSDe7Q+JVm8="
+    },
+    {
+      "tag": "剩余流量：345.21 GB",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "距离下次重置剩余：30 天",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "套餐到期：2026-05-02",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39902,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 03 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39903,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 04 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39904,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 05 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39905,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 06 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39906,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇨🇳台湾 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39801,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇨🇳台湾 02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39802,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇸🇬新加坡A01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39701,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇸🇬新加坡A02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39702,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇯🇵日本A01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39711,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Db6X5b7az8AGfuSGjK-YAmRYUgLsvqtuBs_D4itRwB0"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇯🇵日本A02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39712,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Db6X5b7az8AGfuSGjK-YAmRYUgLsvqtuBs_D4itRwB0"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇺🇸美国 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39731,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇺🇸美国 02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39732,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇻🇳越南A01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39601,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇰🇷韩国 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39602,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇲🇾马来西亚 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39603,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇷🇺俄罗斯01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39604,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇦🇺澳大利亚01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39605,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇹🇷土耳其01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39607,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇫🇷法国01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39608,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇬🇧英国01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39609,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "route",
+        "rule_set": [
+          "ads-all",
+          "dreista-ads"
+        ],
+        "outbound": "🛑 广告拦截"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "kg-mc",
+          "steam-direct"
+        ],
+        "outbound": "🎮 游戏直连"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "google-gemini"
+        ],
+        "outbound": "Google Gemini"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "adobe"
+        ],
+        "outbound": "Adobe"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "category-ai-!cn"
+        ],
+        "outbound": "💬 AI 服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "bilibili"
+        ],
+        "outbound": "📺 哔哩哔哩"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "youtube"
+        ],
+        "outbound": "📹 油管视频"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "google"
+        ],
+        "outbound": "🔍 谷歌服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "cn"
+        ],
+        "outbound": "🔒 国内服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "github",
+          "gitlab"
+        ],
+        "outbound": "🐱 Github"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "microsoft"
+        ],
+        "outbound": "Ⓜ️ 微软服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "apple"
+        ],
+        "outbound": "🍏 苹果服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "facebook",
+          "instagram",
+          "twitter",
+          "tiktok"
+        ],
+        "outbound": "🌐 社交媒体"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "netflix",
+          "hulu",
+          "hbo",
+          "disney",
+          "amazon",
+          "bahamut"
+        ],
+        "outbound": "🎬 流媒体"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "steam",
+          "epicgames",
+          "ea",
+          "blizzard"
+        ],
+        "outbound": "🎮 游戏平台"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "coursera",
+          "udemy",
+          "category-scholar-!cn"
+        ],
+        "outbound": "📚 教育资源"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "paypal"
+        ],
+        "outbound": "💰 金融服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "aws"
+        ],
+        "outbound": "☁️ 云服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "geolocation-!cn"
+        ],
+        "outbound": "🌐 非中国"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "google-ip"
+        ],
+        "outbound": "🔍 谷歌服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "private-ip"
+        ],
+        "outbound": "🏠 私有网络"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "cn-ip"
+        ],
+        "outbound": "🔒 国内服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "telegram-ip"
+        ],
+        "outbound": "📲 电报消息"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "telegram"
+        ],
+        "outbound": "📲 电报消息"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "ads-all",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/category-ads-all.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "dreista-ads",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/main/rule-set/category-ads-all.srs",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "kg-mc",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/GameRules/main/src/kg-mc.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "steam-direct",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/GameRules/main/src/steam-direct.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "google-gemini",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/google-gemini.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "category-ai-!cn",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/category-ai-!cn.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "bilibili",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/bilibili.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "cn",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/cn.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "youtube",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/youtube.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "google",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/google.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "telegram",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/telegram.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "github",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/github.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "netflix",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/netflix.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "disney",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/disney.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "steam",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/steam.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "facebook",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/facebook.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "instagram",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/instagram.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "twitter",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/twitter.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "tiktok",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/tiktok.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "hulu",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/hulu.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "hbo",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/hbo.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "amazon",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/amazon.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "bahamut",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/bahamut.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "epicgames",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/epicgames.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "ea",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/ea.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "blizzard",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/blizzard.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "adobe",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/adobe.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "microsoft",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/microsoft.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "apple",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/apple.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "gitlab",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/gitlab.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "paypal",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/paypal.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "aws",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/aws.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "coursera",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/coursera.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "udemy",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/udemy.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "geolocation-!cn",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/geolocation-!cn.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "category-scholar-!cn",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/category-scholar-!cn.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "google-ip",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/google-ip.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "telegram-ip",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/telegram-ip.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "private-ip",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/private-ip.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      },
+      {
+        "tag": "cn-ip",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/TextlineX/DailyRules/main/src/cn-ip.json",
+        "format": "source",
+        "download_detour": "🚀 自动选择",
+        "update_interval": "6h"
+      }
+    ],
+    "auto_detect_interface": true,
+    "find_process": true,
+    "final": "🐟 漏网之鱼"
+  }
+}
