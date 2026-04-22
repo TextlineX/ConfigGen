@@ -166,10 +166,15 @@ function buildRoute(config, cdnIndex = 0) {
     if (cdnIndex === 0) return url;
     if (url.includes('raw.githubusercontent.com')) {
       const cdn = CDN.github[cdnIndex] || CDN.github[0];
-      // kgithub 需要在路径中添加 /raw/
+      // moeyy.cn 格式: github.moeyy.cn/{user}/{repo}/raw/{branch}/{path}
+      if (cdn.includes('github.moeyy.cn')) {
+        return url.replace('https://raw.githubusercontent.com/', 'https://github.moeyy.cn/').replace('/blob/', '/raw/');
+      }
+      // kgithub 格式: kgithub.com/{user}/{repo}/{branch}/{path}
       if (cdn.includes('kgithub.com')) {
         return url.replace('https://raw.githubusercontent.com/', 'https://kgithub.com/').replace('/blob/', '/raw/');
       }
+      // 其他 CDN 直接替换域名
       return url.replace('https://raw.githubusercontent.com', cdn);
     }
     if (url.includes('github.com') && url.includes('/releases/')) {

@@ -1060,7 +1060,7 @@
       {
         "tag": "ads-all",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/category-ads-all.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/category-ads-all.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1068,7 +1068,7 @@
       {
         "tag": "kg-mc",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/GameRules/main/src/kg-mc.json",
+        "url": "https://github.moeyy.cn/TextlineX/GameRules/main/src/kg-mc.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1076,7 +1076,7 @@
       {
         "tag": "steam-direct",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/GameRules/main/src/steam-direct.json",
+        "url": "https://github.moeyy.cn/TextlineX/GameRules/main/src/steam-direct.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1084,7 +1084,7 @@
       {
         "tag": "google-gemini",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/google-gemini.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/google-gemini.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1092,7 +1092,7 @@
       {
         "tag": "category-ai-!cn",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/category-ai-!cn.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/category-ai-!cn.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1100,7 +1100,7 @@
       {
         "tag": "bilibili",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/bilibili.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/bilibili.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1108,7 +1108,7 @@
       {
         "tag": "cn",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/cn.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/cn.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1116,7 +1116,7 @@
       {
         "tag": "youtube",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/youtube.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/youtube.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1124,7 +1124,7 @@
       {
         "tag": "google",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/google.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/google.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1132,7 +1132,7 @@
       {
         "tag": "telegram",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/telegram.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/telegram.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1140,7 +1140,7 @@
       {
         "tag": "github",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/github.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/github.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1148,7 +1148,7 @@
       {
         "tag": "netflix",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/netflix.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/netflix.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1156,7 +1156,7 @@
       {
         "tag": "disney",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/disney.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/disney.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1164,7 +1164,7 @@
       {
         "tag": "steam",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/steam.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/steam.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1172,7 +1172,7 @@
       {
         "tag": "facebook",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/facebook.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/facebook.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1180,7 +1180,7 @@
       {
         "tag": "instagram",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/instagram.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/instagram.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1188,7 +1188,7 @@
       {
         "tag": "twitter",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/twitter.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/twitter.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1196,7 +1196,7 @@
       {
         "tag": "tiktok",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/tiktok.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/tiktok.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1204,7 +1204,7 @@
       {
         "tag": "hulu",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/hulu.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/hulu.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1212,7 +1212,7 @@
       {
         "tag": "hbo",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/hbo.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/hbo.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1220,7 +1220,7 @@
       {
         "tag": "amazon",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/amazon.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/amazon.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1228,7 +1228,7 @@
       {
         "tag": "bahamut",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/bahamut.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/bahamut.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1236,7 +1236,7 @@
       {
         "tag": "epicgames",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/epicgames.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/epicgames.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1244,7 +1244,7 @@
       {
         "tag": "ea",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/ea.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/ea.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1252,7 +1252,7 @@
       {
         "tag": "blizzard",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/blizzard.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/blizzard.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1260,7 +1260,7 @@
       {
         "tag": "adobe",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/adobe.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/adobe.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1268,7 +1268,7 @@
       {
         "tag": "microsoft",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/microsoft.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/microsoft.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1276,7 +1276,7 @@
       {
         "tag": "apple",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/apple.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/apple.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1284,7 +1284,7 @@
       {
         "tag": "gitlab",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/gitlab.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/gitlab.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1292,7 +1292,7 @@
       {
         "tag": "paypal",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/paypal.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/paypal.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1300,7 +1300,7 @@
       {
         "tag": "aws",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/aws.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/aws.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1308,7 +1308,7 @@
       {
         "tag": "coursera",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/coursera.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/coursera.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1316,7 +1316,7 @@
       {
         "tag": "udemy",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/udemy.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/udemy.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1324,7 +1324,7 @@
       {
         "tag": "geolocation-!cn",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/geolocation-!cn.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/geolocation-!cn.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1332,7 +1332,7 @@
       {
         "tag": "category-scholar-!cn",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/category-scholar-!cn.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/category-scholar-!cn.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1340,7 +1340,7 @@
       {
         "tag": "google-ip",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/google-ip.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/google-ip.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1348,7 +1348,7 @@
       {
         "tag": "telegram-ip",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/telegram-ip.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/telegram-ip.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1356,7 +1356,7 @@
       {
         "tag": "private-ip",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/private-ip.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/private-ip.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
@@ -1364,7 +1364,7 @@
       {
         "tag": "cn-ip",
         "type": "remote",
-        "url": "https://kgithub.com/TextlineX/DailyRules/main/src/cn-ip.json",
+        "url": "https://github.moeyy.cn/TextlineX/DailyRules/main/src/cn-ip.json",
         "format": "source",
         "download_detour": "🚀 自动选择",
         "update_interval": "6h"
