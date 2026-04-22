@@ -5,7 +5,7 @@
 const CDN = require('../src/cdn');
 
 module.exports = function singbox(config, options = {}) {
-  const cdnIndex = options.cdnIndex ?? 1;  // 默认使用 CDN 加速
+  const cdnIndex = options.cdnIndex ?? 1;  // 默认使用 kgithub CDN
   const { outbounds, rules, rule_sets } = parseConfig(config);
 
   const cfg = {
@@ -164,9 +164,12 @@ function buildRoute(config, cdnIndex = 0) {
   // 应用 CDN 加速
   const applyCdn = (url) => {
     if (cdnIndex === 0) return url;
-    // 替换 CDN
     if (url.includes('raw.githubusercontent.com')) {
       const cdn = CDN.github[cdnIndex] || CDN.github[0];
+      // kgithub 需要在路径中添加 /raw/
+      if (cdn.includes('kgithub.com')) {
+        return url.replace('https://raw.githubusercontent.com/', 'https://kgithub.com/').replace('/blob/', '/raw/');
+      }
       return url.replace('https://raw.githubusercontent.com', cdn);
     }
     if (url.includes('github.com') && url.includes('/releases/')) {
