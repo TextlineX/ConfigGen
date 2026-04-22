@@ -5,7 +5,7 @@
 const CDN = require('../src/cdn');
 
 module.exports = function singbox(config, options = {}) {
-  const cdnIndex = 0;  // 使用官方源，通过代理下载
+  const cdnIndex = 1;  // 默认使用 mirror.ghproxy.com CDN
   const { outbounds, rules, rule_sets } = parseConfig(config);
 
   const cfg = {
@@ -174,7 +174,7 @@ function buildRoute(config, cdnIndex = 0) {
       if (cdn.includes('kgithub.com')) {
         return url.replace('https://raw.githubusercontent.com/', 'https://kgithub.com/').replace('/blob/', '/raw/');
       }
-      // 其他 CDN 直接替换域名
+      // 其他 CDN (mirror.ghproxy, ghproxy) 直接替换域名
       return url.replace('https://raw.githubusercontent.com', cdn);
     }
     if (url.includes('github.com') && url.includes('/releases/')) {

@@ -7,11 +7,11 @@ module.exports = {
   // GitHub Raw 加速
   github: [
     'https://raw.githubusercontent.com',
-    'https://github.moeyy.cn',
     'https://mirror.ghproxy.com',
-    'https://kgithub.com',
-    'https://ghproxy.net',
     'https://ghproxy.com',
+    'https://ghproxy.net',
+    'https://github.moeyy.cn',
+    'https://kgithub.com',
     'https://gitclone.com/github.com',
   ],
 
