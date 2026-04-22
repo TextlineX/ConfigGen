@@ -7,8 +7,8 @@ module.exports = {
   // GitHub Raw 加速
   github: [
     'https://raw.githubusercontent.com',
+    'https://ghproxy.com/https://raw.githubusercontent.com',
     'https://mirror.ghproxy.com',
-    'https://ghproxy.com',
     'https://ghproxy.net',
     'https://github.moeyy.cn',
     'https://kgithub.com',

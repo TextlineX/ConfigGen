@@ -5,7 +5,7 @@
 const CDN = require('../src/cdn');
 
 module.exports = function singbox(config, options = {}) {
-  const cdnIndex = 1;  // 默认使用 mirror.ghproxy.com CDN
+  const cdnIndex = 1;  // 默认使用 ghproxy.com CDN
   const { outbounds, rules, rule_sets } = parseConfig(config);
 
   const cfg = {
