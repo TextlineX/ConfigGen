@@ -4,10 +4,12 @@
  */
 
 module.exports = {
-  // GitHub Raw 加速
+  // GitHub Raw 加速（不带完整路径的CDN）
   github: [
     'https://raw.githubusercontent.com',
     'https://ghproxy.com/https://raw.githubusercontent.com',
+    'https://ghfast.top/https://raw.githubusercontent.com',
+    'https://gh-proxy.top/https://raw.githubusercontent.com',
     'https://mirror.ghproxy.com',
     'https://ghproxy.net',
     'https://github.moeyy.cn',

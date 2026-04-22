@@ -5,7 +5,7 @@
 const CDN = require('../src/cdn');
 
 module.exports = function singbox(config, options = {}) {
-  const cdnIndex = 1;  // 默认使用 ghproxy.com CDN
+  const cdnIndex = 2;  // 默认使用 ghfast.top CDN
   const { outbounds, rules, rule_sets } = parseConfig(config);
 
   const cfg = {
@@ -174,7 +174,11 @@ function buildRoute(config, cdnIndex = 0) {
       if (cdn.includes('kgithub.com')) {
         return url.replace('https://raw.githubusercontent.com/', 'https://kgithub.com/').replace('/blob/', '/raw/');
       }
-      // 其他 CDN (mirror.ghproxy, ghproxy) 直接替换域名
+      // ghproxy/ghfast 类 CDN 直接拼接完整路径
+      if (cdn.includes('https://raw.githubusercontent.com') || cdn.includes('/https://raw.githubusercontent.com')) {
+        return cdn + url.substring(url.indexOf('/', 8));  // 保留完整路径
+      }
+      // 其他 CDN 直接替换域名
       return url.replace('https://raw.githubusercontent.com', cdn);
     }
     if (url.includes('github.com') && url.includes('/releases/')) {
