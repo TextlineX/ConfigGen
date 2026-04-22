@@ -1,0 +1,1430 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "output": "",
+    "timestamp": false
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:20123",
+      "external_ui": "",
+      "external_ui_download_url": "",
+      "secret": "",
+      "default_mode": "rule",
+      "access_control_allow_origin": [],
+      "access_control_allow_private_network": false
+    },
+    "cache_file": {
+      "enabled": false,
+      "path": "cache.db",
+      "cache_id": "",
+      "store_fakeip": true,
+      "rdrc_timeout": "7d"
+    }
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "0.0.0.0",
+      "listen_port": 20122,
+      "tcp_fast_open": true,
+      "tcp_multi_path": true,
+      "udp_fragment": true
+    },
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "",
+      "address": [
+        "172.19.0.1/30"
+      ],
+      "mtu": 0,
+      "auto_route": true,
+      "strict_route": true,
+      "endpoint_independent_nat": false,
+      "stack": "mixed"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "🚀没有选择",
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "📺 哔哩哔哩"
+    },
+    {
+      "type": "direct",
+      "tag": "🛑 广告拦截"
+    },
+    {
+      "type": "direct",
+      "tag": "游戏直连"
+    },
+    {
+      "type": "urltest",
+      "tag": "Google Gemini",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "Adobe"
+    },
+    {
+      "type": "urltest",
+      "tag": "💬 AI 服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "📹 油管视频",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "1x-🇭🇰香港 01 Lv2",
+        "1x-🇭🇰香港 02 Lv2",
+        "1x-🇭🇰香港 03 Lv2",
+        "1x-🇭🇰香港 04 Lv2",
+        "1x-🇭🇰香港 05 Lv2",
+        "1x-🇭🇰香港 06 Lv2"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🔍 谷歌服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "🏠 私有网络"
+    },
+    {
+      "type": "direct",
+      "tag": "🔒 国内服务"
+    },
+    {
+      "type": "urltest",
+      "tag": "📲 电报消息",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🐱 Github",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "Ⓜ️ 微软服务"
+    },
+    {
+      "type": "direct",
+      "tag": "🍏 苹果服务"
+    },
+    {
+      "type": "urltest",
+      "tag": "🌐 社交媒体",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🎬 流媒体",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🎮 游戏平台",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "📚 教育资源",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "💰 金融服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "☁️ 云服务",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🌐 非中国",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "🚀没有选择",
+        "私人使用 | SS爱弥斯1 1"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🐟 漏网之鱼",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false,
+      "outbounds": [
+        "私人使用 | SS爱弥斯1 1",
+        "🚀没有选择",
+        "block",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "直连",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "出去",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "block"
+      ]
+    },
+    {
+      "tag": "私人使用 | SS爱弥斯1 1",
+      "type": "shadowsocks",
+      "server": "tl.textline.top",
+      "server_port": 59112,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0yUH1QiGs0e22QsarU2/OB4q8EYWJ4MRNSDe7Q+JVm8="
+    },
+    {
+      "tag": "剩余流量：345.21 GB",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "距离下次重置剩余：30 天",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "套餐到期：2026-05-02",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39901,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39902,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 03 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39903,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 04 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39904,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 05 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39905,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇭🇰香港 06 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39906,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1t7AB2CLdPzAfsh703F1yF8yWUC1WollmkJjHQQEQGk"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇨🇳台湾 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39801,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇨🇳台湾 02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39802,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇸🇬新加坡A01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39701,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇸🇬新加坡A02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39702,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ex-pkJJpiT4BISxIsMJgmVPbkCqoV-mdxQwqtGErkUo"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇯🇵日本A01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39711,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Db6X5b7az8AGfuSGjK-YAmRYUgLsvqtuBs_D4itRwB0"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇯🇵日本A02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39712,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Db6X5b7az8AGfuSGjK-YAmRYUgLsvqtuBs_D4itRwB0"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇺🇸美国 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39731,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇺🇸美国 02 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39732,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇻🇳越南A01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39601,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇰🇷韩国 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39602,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇲🇾马来西亚 01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39603,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇷🇺俄罗斯01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39604,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇦🇺澳大利亚01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39605,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇹🇷土耳其01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39607,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇫🇷法国01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39608,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "tag": "1x-🇬🇧英国01 Lv2",
+      "type": "vless",
+      "server": "b9736203-d91e-4278-8c2e-c3c7de809920.eueueueu.com",
+      "server_port": 39609,
+      "uuid": "106687f0-f449-497a-a6ac-551f258b3553",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AsRRpI9UKycb9se59OPYYiqrYjZ2GLjeCA095Kw9PwE"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "flow": "xtls-rprx-vision"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "route",
+        "rule_set": [
+          "日常规则"
+        ],
+        "outbound": "🚀没有选择"
+      },
+      {
+        "action": "route",
+        "clash_mode": "global",
+        "outbound": "🚀没有选择"
+      },
+      {
+        "action": "sniff"
+      },
+      {
+        "action": "hijack-dns",
+        "protocol": "dns"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "ads-all",
+          "dreista-ads",
+          null
+        ],
+        "outbound": "🛑 广告拦截"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "kg-mc",
+          "steam-direct"
+        ],
+        "outbound": "游戏直连"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "google-gemini"
+        ],
+        "outbound": "Google Gemini"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "adobe"
+        ],
+        "outbound": "Adobe"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "category-ai-!cn"
+        ],
+        "outbound": "💬 AI 服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "bilibili"
+        ],
+        "outbound": "📺 哔哩哔哩"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "youtube"
+        ],
+        "outbound": "📹 油管视频"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "google"
+        ],
+        "outbound": "🔍 谷歌服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "meta-cn",
+          "cn"
+        ],
+        "outbound": "🔒 国内服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "github",
+          "gitlab"
+        ],
+        "outbound": "🐱 Github"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "microsoft"
+        ],
+        "outbound": "Ⓜ️ 微软服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "apple"
+        ],
+        "outbound": "🍏 苹果服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "facebook",
+          "instagram",
+          "twitter",
+          "tiktok",
+          "linkedin"
+        ],
+        "outbound": "🌐 社交媒体"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "netflix",
+          "hulu",
+          "disney",
+          "hbo",
+          "amazon",
+          "bahamut"
+        ],
+        "outbound": "🎬 流媒体"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "steam",
+          "epicgames",
+          "ea",
+          "ubisoft",
+          "blizzard"
+        ],
+        "outbound": "🎮 游戏平台"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "coursera",
+          "edx",
+          "udemy",
+          "khanacademy",
+          "category-scholar-!cn"
+        ],
+        "outbound": "📚 教育资源"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "paypal",
+          "visa",
+          "mastercard",
+          "stripe",
+          "wise"
+        ],
+        "outbound": "💰 金融服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "aws",
+          "azure",
+          "digitalocean",
+          "heroku",
+          "dropbox"
+        ],
+        "outbound": "☁️ 云服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "geolocation-!cn"
+        ],
+        "outbound": "🌐 非中国"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "google-ip"
+        ],
+        "outbound": "🔍 谷歌服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "private-ip"
+        ],
+        "outbound": "🏠 私有网络"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "cn-ip"
+        ],
+        "outbound": "🔒 国内服务"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "telegram-ip"
+        ],
+        "outbound": "📲 电报消息"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "日常规则",
+        "type": "local",
+        "path": "../rulesets/ID_6vc5ga1a.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "ads-all",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.srs",
+        "format": "binary",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "dreista-ads",
+        "type": "remote",
+        "url": " https://gh-proxy.com/https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/category-ads-all.srs",
+        "format": "binary",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "kg-mc",
+        "type": "remote",
+        "url": "https://gh-proxy.org/https://github.com/TextlineX/GameRules/releases/download/nightly/kg-mc.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "steam-direct",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://github.com/TextlineX/GameRules/releases/download/nightly/steam-direct.srs",
+        "format": "binary",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "google-gemini",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "adobe",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/adobe.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "category-ai-!cn",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "bilibili",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "youtube",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "google",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
+        "format": "binary",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "meta-cn",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-cn.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "cn",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "github",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs",
+        "format": "binary",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "gitlab",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/gitlab.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "microsoft",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "apple",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "facebook",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/facebook.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "instagram",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/instagram.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "twitter",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "tiktok",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "linkedin",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/REI-TECH/sing-box-rules/main/geosite/linkedin.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "netflix",
+        "type": "remote",
+        "url": "\thttps://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "hulu",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hulu.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "disney",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "hbo",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hbo.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "amazon",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/amazon.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "bahamut",
+        "type": "remote",
+        "url": "\thttps://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geosite/bahamut.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "steam",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "epicgames",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/epicgames.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "ea",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/ea.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "ubisoft",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ubisoft.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "blizzard",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/blizzard.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "coursera",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/coursera.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "edx",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/edx.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "udemy",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/udemy.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "khanacademy",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/khanacademy.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "category-scholar-!cn",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-scholar-!cn.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "paypal",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/paypal.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "visa",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/visa.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "mastercard",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/mastercard.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "stripe",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/stripe.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "wise",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/wise.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "aws",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/aws.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "azure",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/azure.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "digitalocean",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/digitalocean.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "heroku",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/heroku.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "dropbox",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/dropbox.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "geolocation-!cn",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "google-ip",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "private-ip",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "cn-ip",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+        "format": "binary"
+      },
+      {
+        "tag": "telegram-ip",
+        "type": "remote",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
+        "format": "binary",
+        "download_detour": "直连"
+      }
+    ],
+    "auto_detect_interface": true,
+    "find_process": true,
+    "final": "🐟 漏网之鱼",
+    "default_domain_resolver": {
+      "server": "dns_resolver"
+    }
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "type": "tcp",
+        "detour": "🚀没有选择",
+        "domain_resolver": "dns_resolver",
+        "server": "1.1.1.1"
+      },
+      {
+        "tag": "dns_direct",
+        "type": "https",
+        "domain_resolver": "dns_resolver",
+        "server": "dns.alidns.com"
+      },
+      {
+        "tag": "dns_resolver",
+        "type": "udp",
+        "server": "223.5.5.5"
+      },
+      {
+        "tag": "dns_fakeip",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "action": "route",
+        "rule_set": "geolocation-!cn",
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_fakeip"
+      },
+      {
+        "action": "route",
+        "rule_set": "geolocation-!cn",
+        "query_type": "CNAME",
+        "server": "dns_proxy"
+      },
+      {
+        "action": "predefined",
+        "invert": true,
+        "query_type": [
+          "A",
+          "AAAA",
+          "CNAME"
+        ],
+        "rcode": "REFUSED"
+      }
+    ],
+    "disable_cache": false,
+    "disable_expire": false,
+    "independent_cache": true,
+    "final": "dns_direct",
+    "strategy": "prefer_ipv4"
+  }
+}

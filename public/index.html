@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConfigGen 面板</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ConfigGen 面板</h1>
+      <p>多客户端配置生成器</p>
+    </header>
+
+    <div class="main-content">
+      <!-- 订阅地址 -->
+      <section class="card">
+        <h2>📡 订阅地址</h2>
+        <div class="subscription-links">
+          <div class="link-item">
+            <span class="label">Clash</span>
+            <input type="text" id="sub-clash" readonly value="/sub/clash">
+            <button onclick="copyLink('sub-clash')">复制</button>
+          </div>
+          <div class="link-item">
+            <span class="label">Sing-box</span>
+            <input type="text" id="sub-singbox" readonly value="/sub/singbox">
+            <button onclick="copyLink('sub-singbox')">复制</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 规则集 -->
+      <section class="card">
+        <h2>📋 规则集</h2>
+        <div id="rules-list" class="rules-grid"></div>
+      </section>
+
+      <!-- 节点列表 -->
+      <section class="card">
+        <h2>🖥️ 节点列表</h2>
+        <div id="nodes-list" class="nodes-grid"></div>
+        <button onclick="loadNodes()" class="btn-refresh">刷新节点</button>
+      </section>
+
+      <!-- 生成配置 -->
+      <section class="card">
+        <h2>⚙️ 配置生成</h2>
+        <div class="generate-section">
+          <select id="client-type">
+            <option value="singbox">Sing-box</option>
+            <option value="clash">Clash / Clash Meta</option>
+            <option value="surge">Surge / Shadowrocket</option>
+          </select>
+          <button onclick="generateConfig()">生成配置</button>
+        </div>
+        <pre id="config-output" class="config-preview"></pre>
+        <button onclick="downloadConfig()" id="btn-download" class="btn-download" style="display:none">下载配置</button>
+      </section>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

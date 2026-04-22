@@ -1,0 +1,35 @@
+name: Sync Rules & Deploy
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # 每6小时更新一次
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync DailyRules
+        run: |
+          curl -sL "https://api.github.com/repos/TextlineX/DailyRules/contents/src" | \
+          jq -r '.[].download_url' | \
+          xargs -I {} curl -sL {} -o "src/$(basename {})"
+
+      - name: Sync GameRules
+        run: |
+          curl -sL "https://api.github.com/repos/TextlineX/GameRules/contents/src" | \
+          jq -r '.[].download_url' | \
+          xargs -I {} curl -sL {} -o "src/$(basename {})"
+
+      - name: Commit & Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: sync rules $(date +%Y%m%d%H%M%S)"
+          git push
