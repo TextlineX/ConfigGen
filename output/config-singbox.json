@@ -284,16 +284,6 @@
       "interval": "3m",
       "tolerance": 50,
       "outbounds": [
-        "🐟 漏网之鱼"
-      ]
-    },
-    {
-      "type": "urltest",
-      "tag": "🐟 漏网之鱼",
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "3m",
-      "tolerance": 50,
-      "outbounds": [
         "私人使用 | SS爱弥斯1 1",
         "剩余流量：345.21 GB",
         "距离下次重置剩余：30 天",
@@ -1375,6 +1365,9 @@
     ],
     "auto_detect_interface": true,
     "find_process": true,
-    "final": "🐟 漏网之鱼"
+    "final": "🐟 漏网之鱼",
+    "default_domain_resolver": {
+      "server": "dns_resolver"
+    }
   }
 }

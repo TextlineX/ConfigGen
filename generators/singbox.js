@@ -35,6 +35,8 @@ function buildOutbounds(config) {
   for (const ob of (config.outbounds || [])) {
     if (ob.type === 'urltest') {
       const tag = ob.tag;
+      // 跳过 漏网之鱼，使用生成器自带的版本
+      if (tag === '🐟 漏网之鱼') continue;
       proxyGroups[tag] = { url: ob.url || 'https://www.gstatic.com/generate_204', nodes: [] };
       proxyGroups[tag].nodes.push(ob.tag);
     }
@@ -255,7 +257,10 @@ function buildRoute(config, cdnIndex = 0) {
     rule_set: ruleSetList,
     auto_detect_interface: true,
     find_process: true,
-    final: '🐟 漏网之鱼'
+    final: '🐟 漏网之鱼',
+    default_domain_resolver: {
+      server: 'dns_resolver'
+    }
   };
 }
 
