@@ -1,0 +1,20 @@
+# 依赖
+node_modules/
+
+# 数据目录（包含敏感配置）
+data/
+
+# 临时文件
+*.log
+*.tmp
+*.swp
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# 输出文件
+output/
